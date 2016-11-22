@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
+    <title>Hello Django</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Creabine</h1>
+        <button @click=" toggle() ">toggle</button>
+	    <P v-show="showModal">Hello Django , this is my first page.</P>
+
+        <h1>input your massage:</h1>
+		<form action="/index/" method="post">
+			<input type="text" name="name" placeholder="input your name">
+			<input type="text" name="age" placeholder="input your age">
+			<input type="submit" value="submit">
+		</form>
+
+        <h1>user list</h1>
+        <table>
+            <tr>
+                <th>name</th>
+                <th>age</th>
+            </tr>
+            {% for line in data %}
+                <tr>
+                    <td>{{ line.name }}</td>
+                    <td>{{ line.age }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/vue.js"></script>
+    <script src="/static/js/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                showModal: true,
+            },
+            methods:{
+                toggle:function(){
+                    this.showModal = !(this.showModal)
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>
